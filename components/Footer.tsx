@@ -1,76 +1,70 @@
 import Link from "next/link";
+import { MoveRight } from "lucide-react";
+import Image from "next/image";
+import { logo } from "@/assets";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 border-t border-gray-800 pt-16 pb-8 text-gray-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand Col */}
-          <div className="md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded bg-green-600 flex items-center justify-center">
-                <span className="text-white font-bold text-xl font-montserrat">G</span>
-              </div>
-              <span className="font-montserrat font-bold text-xl text-white">
-                Greener <span className="text-green-500">Bricks</span>
+    <footer className="bg-black text-white pt-24 pb-12 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-500 rounded-full blur-[200px] opacity-[0.08] pointer-events-none transform translate-x-1/3 -translate-y-1/2" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-8 mb-20">
+          <div className="lg:col-span-1">
+             <Link href="/" className="flex items-center gap-3 mb-8">
+              <Image src={logo} alt="Greener Bricks Logo" width={50} height={50} className="object-contain" />
+              <span className="font-poppins font-bold text-xl tracking-[0.1em] text-white uppercase">
+                Geener <span className="text-green-500">Bricks</span>
               </span>
             </Link>
-            <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-              Transforming plastic pollution into eco-friendly construction materials that support sustainable cities and a cleaner planet.
-            </p>
-            <p className="text-sm font-semibold text-white tracking-widest uppercase">
-              Zero Emissions. Big Impact.
+            <p className="font-lato leading-relaxed text-base mb-8 text-gray-200">
+              Transforming the global plastic crisis into durable, zero-emission building solutions for the modern world.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-montserrat font-semibold mb-4 uppercase tracking-wider text-sm">Quick Links</h3>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/" className="hover:text-green-500 transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-green-500 transition-colors">About Us</Link></li>
-              <li><Link href="/products" className="hover:text-green-500 transition-colors">Products & Tech</Link></li>
-              <li><Link href="/gallery" className="hover:text-green-500 transition-colors">Gallery</Link></li>
+          <div className="lg:col-span-1">
+            <h4 className="text-green-500 font-montserrat uppercase tracking-[0.2em] text-sm font-bold mb-6">Company</h4>
+            <ul className="space-y-4 font-lato text-base text-gray-100">
+              <li><Link href="/about" className="hover:text-green-400 transition-colors">Our Story</Link></li>
+              <li><Link href="/products" className="hover:text-green-400 transition-colors">Technology</Link></li>
+              <li><Link href="/research" className="hover:text-green-400 transition-colors">Impact & R&D</Link></li>
+              <li><Link href="/contact" className="hover:text-green-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Connect */}
-          <div>
-            <h3 className="text-white font-montserrat font-semibold mb-4 uppercase tracking-wider text-sm">Connect</h3>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/investors" className="hover:text-green-500 transition-colors">Investors</Link></li>
-              <li><Link href="/research" className="hover:text-green-500 transition-colors">Research & Innovation</Link></li>
-              <li><Link href="/news" className="hover:text-green-500 transition-colors">News & Updates</Link></li>
-              <li><Link href="/contact" className="hover:text-green-500 transition-colors">Contact Us</Link></li>
+          <div className="lg:col-span-1">
+            <h4 className="text-green-500 font-montserrat uppercase tracking-[0.2em] text-sm font-bold mb-6">Connect</h4>
+            <ul className="space-y-4 font-lato text-base text-gray-100">
+              <li><Link href="/investors" className="hover:text-green-400 transition-colors">Investors</Link></li>
+              <li><a href="#" className="hover:text-green-400 transition-colors">LinkedIn</a></li>
+              <li><a href="#" className="hover:text-green-400 transition-colors">Twitter</a></li>
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-white font-montserrat font-semibold mb-4 uppercase tracking-wider text-sm">Stay Updated</h3>
-            <p className="text-sm mb-4">Subscribe to our newsletter for the latest updates on sustainable construction.</p>
-            <form className="flex flex-col sm:flex-row gap-2">
+          <div className="lg:col-span-1">
+            <h4 className="text-green-500 font-montserrat uppercase tracking-[0.2em] text-sm font-bold mb-6">Stay Updated</h4>
+            <form className="flex flex-col gap-4">
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 grow"
+                placeholder="EMAIL ADDRESS"
+                className="bg-gray-900 border border-gray-700 text-white placeholder-gray-400 px-4 py-3 text-sm tracking-[0.1em] focus:outline-none focus:border-green-400 transition-colors w-full font-lato"
                 required
               />
               <button
                 type="submit"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-medium transition-colors whitespace-nowrap"
+                className="bg-green-600 text-white px-4 py-3 text-sm font-bold tracking-[0.2em] font-montserrat uppercase hover:bg-white hover:text-black transition-all flex items-center justify-between group rounded-sm shadow-md"
               >
-                Subscribe
+                Subscribe <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-          <p>&copy; {new Date().getFullYear()} Greener Bricks Solution. All rights reserved.</p>
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-lato text-gray-300">
+          <p>© {new Date().getFullYear()} Greener Bricks Solution. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <a href="#" className="hover:text-green-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-green-400 transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

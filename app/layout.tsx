@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Montserrat, Poppins, Open_Sans, Lato } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,8 +9,20 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
 const openSans = Open_Sans({
   variable: "--font-open-sans",
+  subsets: ["latin"],
+});
+
+const lato = Lato({
+  variable: "--font-lato",
+  weight: ["300", "400", "700"],
   subsets: ["latin"],
 });
 
@@ -28,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${openSans.variable} ${montserrat.variable} font-sans antialiased text-gray-900 bg-white min-h-screen flex flex-col`}
+        className={`${openSans.variable} ${montserrat.variable} ${poppins.variable} ${lato.variable} font-sans antialiased text-black bg-white min-h-screen flex flex-col`}
       >
         <Navbar />
         <main className="flex-grow">{children}</main>

@@ -3,6 +3,8 @@
 @theme {
   --font-montserrat: var(--font-montserrat);
   --font-open-sans: var(--font-open-sans);
+  --font-poppins: var(--font-poppins);
+  --font-lato: var(--font-lato);
 }
 
 @layer base {

@@ -1,277 +1,217 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { Factory, Recycle, Building2, Globe2, ArrowRight, Leaf, ShieldCheck, Zap } from "lucide-react";
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
-};
+import Link from "next/link";
+import Image from "next/image";
+import { MoveRight, ArrowRight, Activity, Globe, Zap, Crosshair } from "lucide-react";
+import { g1, g2, g3 } from "@/assets";
 
 export default function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-black text-white py-32 overflow-hidden flex items-center min-h-[90vh]">
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 opacity-20">
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.5 }}
-            transition={{ duration: 2 }}
-            className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-600 rounded-full blur-[150px] mix-blend-screen transform translate-x-1/3 -translate-y-1/3"
-          />
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.5 }}
-            transition={{ duration: 2, delay: 0.5 }}
-            className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-800 rounded-full blur-[120px] mix-blend-screen transform -translate-x-1/3 translate-y-1/3"
-          />
-        </div>
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+  };
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+  const stagger = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
+
+  return (
+    <div className="flex flex-col min-h-screen bg-white text-black font-lato">
+      {/* Hero Section Cinematic - Clean White/Green */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#f8fcf9]">
+        {/* Background Image Abstract */}
+        <div className="absolute inset-0 z-0">
+          <Image src={g1} alt="Environment Hero" fill className="object-cover opacity-100" priority />
+          <div className="absolute inset-0 bg-linear-to-b from-white/40 to-white/90 backdrop-blur-[1px]"></div>
+        </div>
+        
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center mt-20"
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-green-200 bg-green-50 rounded-full shadow-sm">
+             <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></div>
+             <span className="text-green-800 text-xs uppercase tracking-[0.2em] font-bold font-montserrat">Zero Emission Standard</span>
+          </motion.div>
+          
+          <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-8xl font-poppins font-bold tracking-tighter leading-[0.9] mb-8 text-black">
+            TRANSFORMING <br />
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-green-600 via-green-500 to-emerald-700">PLASTIC WASTE.</span>
+          </motion.h1>
+          
+          <motion.p variants={fadeUp} className="text-lg md:text-xl text-gray-700 font-open-sans max-w-2xl font-normal leading-relaxed mb-12">
+            We engineer high-durability construction materials directly from plastic waste using our proprietary zero-emission technology. Clean design, sustainable future.
+          </motion.p>
+          
+          <motion.div variants={fadeUp}>
+            <Link
+              href="/products"
+              className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white uppercase tracking-[0.2em] text-sm overflow-hidden bg-black transition-all shadow-xl hover:shadow-2xl rounded-sm"
+            >
+              <span className="absolute inset-0 w-full h-full bg-green-600 group-hover:scale-100 scale-0 origin-right transition-transform duration-500 ease-[0.16,1,0.3,1]"></span>
+              <span className="relative flex items-center gap-3 group-hover:gap-5 transition-all text-white">Explore Tech <ArrowRight className="w-5 h-5" /></span>
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* The Problem & Solution Statement - Bento grid style */}
+      <section className="py-32 relative z-10 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="max-w-3xl"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8"
           >
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-6xl lg:text-7xl font-montserrat font-bold leading-tight mb-6">
-              Turning <span className="text-transparent bg-clip-text bg-linear-to-r from-green-400 to-emerald-600">Plastic Waste</span> Into Sustainable Building Solutions
-            </motion.h1>
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-gray-300 font-light mb-10 leading-relaxed font-open-sans">
-              Greener Bricks Solution is transforming plastic pollution into eco-friendly construction materials via a closed-loop, clean system that emits <span className="font-semibold text-white">zero CO2</span> to the environment.
-            </motion.p>
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/products"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold rounded-full text-black bg-green-500 hover:bg-green-400 transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.3)] uppercase tracking-wider font-montserrat"
-              >
-                Learn About KEMILAN
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/investors"
-                className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full text-white bg-transparent border-2 border-green-500 hover:bg-green-500/10 transition-all duration-300 uppercase tracking-wider font-montserrat"
-              >
-                Invest in our Innovation
-              </Link>
+            {/* Massive Statement */}
+            <motion.div variants={fadeUp} className="lg:col-span-12 mb-16 lg:px-24 text-center">
+               <h2 className="text-3xl md:text-5xl font-poppins font-light leading-tight text-gray-900">
+                 We are accelerating the global transition to sustainable infrastructure by eliminating <strong className="font-bold text-green-700">plastic pollution</strong> at scale.
+               </h2>
             </motion.div>
+
+            {/* Visual Box 1 */}
+            <motion.div variants={fadeUp} className="lg:col-span-7 relative h-[600px] border border-gray-100 bg-gray-50 overflow-hidden group rounded-xl shadow-sm hover:shadow-xl transition-shadow">
+               <Image src={g2} alt="Sustainable environment" fill className="object-cover opacity-90 group-hover:scale-105 transition-all duration-700" />
+               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
+               <div className="absolute bottom-0 left-0 p-10">
+                 <div className="flex items-center gap-2 mb-4 text-green-400">
+                    <Globe className="w-5 h-5" />
+                    <span className="text-xs uppercase tracking-[0.2em] font-bold font-montserrat">The Crisis</span>
+                 </div>
+                 <h3 className="text-3xl font-poppins font-bold text-white mb-4">A World Drowning in Waste</h3>
+                 <p className="text-gray-200 font-lato leading-relaxed max-w-md">Plastic pollution and excessive carbon emissions from traditional construction threaten our ecosystem. The need for a closed-loop alternative is absolute.</p>
+               </div>
+            </motion.div>
+
+            {/* Data Box 2 */}
+            <motion.div variants={fadeUp} className="lg:col-span-5 relative h-[600px] border border-gray-100 bg-green-900 flex flex-col p-10 justify-between group overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-shadow">
+               <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-[100px] group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"></div>
+               
+               <div>
+                  <div className="flex items-center gap-2 mb-12 text-green-300">
+                    <Zap className="w-5 h-5" />
+                    <span className="text-xs uppercase tracking-[0.2em] font-bold font-montserrat">The Innovation</span>
+                 </div>
+                 <h3 className="text-5xl font-poppins font-bold text-white leading-tight">Zero<br/>Emissions.</h3>
+               </div>
+               
+               <div className="space-y-8 relative z-10">
+                 <p className="text-green-50 font-lato leading-relaxed text-lg border-l-2 border-green-400 pl-6">
+                   Our proprietary KEMILAN technology digests raw plastic waste without combustion, producing highly durable bricks while capping out environmental footprint to zero.
+                 </p>
+                 <Link href="/products" className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.2em] font-bold text-white hover:text-green-300 transition-colors font-montserrat">
+                    Discover Our Tech <MoveRight className="w-5 h-5" />
+                 </Link>
+               </div>
+            </motion.div>
+
           </motion.div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerContainer}
-            >
-              <motion.h2 variants={fadeIn} className="text-sm text-green-600 font-semibold tracking-widest uppercase mb-3 font-montserrat flex items-center gap-2">
-                <Globe2 className="w-4 h-4" /> The Challenge
-              </motion.h2>
-              <motion.h3 variants={fadeIn} className="text-4xl md:text-5xl font-montserrat font-bold text-gray-900 mb-6 leading-tight">
-                The Plastic Waste <br /> Crisis
-              </motion.h3>
-              <motion.div variants={fadeIn} className="w-20 h-1 bg-green-600 mb-8 rounded-full"></motion.div>
-              <motion.p variants={fadeIn} className="text-lg text-gray-600 mb-6 leading-relaxed font-open-sans">
-                Millions of tons of plastic waste are generated each year, creating severe environmental challenges. Improper disposal contributes to pollution in landfills, waterways, and communities across Africa and globally.
-              </motion.p>
-              <motion.div variants={fadeIn} className="border-l-4 border-green-500 pl-6 py-4 bg-gray-50 rounded-r-xl">
-                <p className="text-lg text-gray-800 leading-relaxed font-open-sans italic">
-                  "We address these challenges by converting plastic waste into durable pavement bricks for construction purposes, using a sustainable recycling system with zero carbon emission."
-                </p>
-              </motion.div>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl bg-gray-100 flex items-center justify-center border border-gray-200"
-            >
-              <div className="absolute inset-0 bg-linear-to-tr from-gray-200 to-gray-300"></div>
-              <div className="relative z-10 flex flex-col items-center gap-4 text-gray-400">
-                <Recycle className="w-20 h-20 opacity-50" />
-                <span className="font-montserrat uppercase tracking-widest text-sm font-semibold">Illustration Placement</span>
+      {/* Mid-section */}
+      <section className="py-40 relative border-y border-gray-100 bg-green-50 overflow-hidden flex items-center">
+         <div className="absolute inset-0 z-0">
+          <Image src={g3} alt="Production Context" fill className="object-cover opacity-30" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+           <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col lg:flex-row gap-16 justify-between items-end"
+           >
+              <div className="max-w-3xl">
+                <span className="text-green-700 text-xs uppercase tracking-[0.2em] font-bold block mb-6 font-montserrat">Our Impact</span>
+                <h2 className="text-4xl md:text-5xl font-poppins font-bold text-black leading-tight mb-8">
+                  Building the infrastructure of tomorrow, from the remnants of yesterday.
+                </h2>
               </div>
-            </motion.div>
+              <div className="shrink-0 mb-4">
+                 <Link
+                  href="/about"
+                  className="bg-black text-white px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-green-600 transition-colors block font-montserrat shadow-xl rounded-sm"
+                 >
+                   Who We Are
+                 </Link>
+              </div>
+           </motion.div>
+        </div>
+      </section>
+
+      {/* High-End Feature Display */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+             <motion.div 
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once:true }} transition={{ duration: 1 }}
+                className="bg-white p-10 border border-gray-100 rounded-xl shadow-md hover:shadow-2xl transition-all h-full group"
+             >
+                <div className="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-green-600 mb-8 group-hover:scale-110 transition-transform"><Activity className="w-6 h-6"/></div>
+                <h3 className="text-xl font-poppins font-bold text-black mb-4">Radical Durability</h3>
+                <p className="text-gray-600 font-lato leading-relaxed text-base">Engineered to outperform traditional concrete, possessing higher tensile strength and absolute moisture resistance.</p>
+             </motion.div>
+             <motion.div 
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once:true }} transition={{ duration: 1, delay: 0.2 }}
+                className="bg-white p-10 border border-gray-100 rounded-xl shadow-md hover:shadow-2xl transition-all h-full group"
+             >
+                <div className="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-green-600 mb-8 group-hover:scale-110 transition-transform"><Globe className="w-6 h-6"/></div>
+                <h3 className="text-xl font-poppins font-bold text-black mb-4">Infinite Circularity</h3>
+                <p className="text-gray-600 font-lato leading-relaxed text-base">Every brick laid is plastic rescued from landfills. A fully closed-loop product lifecycle supporting modern sustainability goals.</p>
+             </motion.div>
+             <motion.div 
+                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once:true }} transition={{ duration: 1, delay: 0.4 }}
+                className="bg-white p-10 border border-gray-100 rounded-xl shadow-md hover:shadow-2xl transition-all h-full group"
+             >
+                <div className="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-green-600 mb-8 group-hover:scale-110 transition-transform"><Crosshair className="w-6 h-6"/></div>
+                <h3 className="text-xl font-poppins font-bold text-black mb-4">Zero Carbon</h3>
+                <p className="text-gray-600 font-lato leading-relaxed text-base">Manufactured without direct combustion, severing the link between infrastructure development and carbon gas emission.</p>
+             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Solution Section */}
-      <section className="py-24 bg-gray-50 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <motion.h2 variants={fadeIn} className="text-sm text-green-600 font-semibold tracking-widest uppercase mb-3 font-montserrat">Our Solution</motion.h2>
-            <motion.h3 variants={fadeIn} className="text-4xl md:text-5xl font-montserrat font-bold text-gray-900 mb-6">
-              Innovative Recycling Technology
-            </motion.h3>
-            <motion.p variants={fadeIn} className="text-lg text-gray-600 font-open-sans">
-              Leveraging our unique <span className="font-semibold text-gray-900">KEMILAN</span> and <span className="font-semibold text-gray-900">WREEKER</span> technologies, we transform plastic waste into strong, reliable building bricks suitable for construction and infrastructure development.
-            </motion.p>
-          </motion.div>
-
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {/* Step 1 */}
-            <motion.div variants={fadeIn} className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Recycle className="w-32 h-32" />
-              </div>
-              <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-6 text-2xl group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 relative z-10">
-                <Recycle className="w-8 h-8" />
-              </div>
-              <h4 className="text-2xl font-bold font-montserrat text-gray-900 mb-4 relative z-10">1. Collection</h4>
-              <p className="text-gray-600 font-open-sans relative z-10">
-                We collect plastic and non-biodegradable waste from communities, preventing it from reaching landfills and waterways.
-              </p>
-            </motion.div>
-
-            {/* Step 2 */}
-            <motion.div variants={fadeIn} className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Factory className="w-32 h-32" />
-              </div>
-              <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-6 text-2xl group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 relative z-10">
-                <Factory className="w-8 h-8" />
-              </div>
-              <h4 className="text-2xl font-bold font-montserrat text-gray-900 mb-4 relative z-10">2. Processing</h4>
-              <p className="text-gray-600 font-open-sans relative z-10">
-                Waste is sorted and processed through our proprietary KEMILAN and WREEKER machines without releasing CO2.
-              </p>
-            </motion.div>
-
-            {/* Step 3 */}
-            <motion.div variants={fadeIn} className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Building2 className="w-32 h-32" />
-              </div>
-              <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-6 text-2xl group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 relative z-10">
-                <Building2 className="w-8 h-8" />
-              </div>
-              <h4 className="text-2xl font-bold font-montserrat text-gray-900 mb-4 relative z-10">3. Building Output</h4>
-              <p className="text-gray-600 font-open-sans relative z-10">
-                The final output is eco-friendly, strong plastic bricks, providing sustainable building materials for construction.
-              </p>
-            </motion.div>
-          </motion.div>
+      {/* CTA Section */}
+      <section className="py-40 relative bg-black">
+        <div className="absolute inset-0 z-0">
+          <Image src={g1} alt="Impact" fill className="object-cover opacity-40 filter grayscale" />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-black/50"></div>
         </div>
-      </section>
-
-      {/* Impact Section */}
-      <section className="py-24 bg-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')] bg-repeat"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="mb-16 md:flex justify-between items-end"
-          >
-            <div className="max-w-2xl">
-              <motion.h2 variants={fadeIn} className="text-sm text-green-400 font-semibold tracking-widest uppercase mb-3 font-montserrat flex items-center gap-2">
-                <Leaf className="w-4 h-4" /> Our Impact
-              </motion.h2>
-              <motion.h3 variants={fadeIn} className="text-4xl md:text-5xl font-montserrat font-bold text-white">
-                Driving Environmental & Economic Change
-              </motion.h3>
-            </div>
-            <motion.div variants={fadeIn}>
-              <Link
-                href="/research"
-                className="hidden md:inline-flex mt-6 md:mt-0 items-center justify-center px-6 py-3 border border-gray-600 rounded-full hover:bg-white hover:text-black transition-colors duration-300 font-montserrat text-sm uppercase tracking-wide group"
-              >
-                View Research <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center"
-          >
-            <motion.div variants={fadeIn} className="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <Leaf className="w-8 h-8 text-green-400 mx-auto mb-4" />
-              <div className="text-5xl md:text-6xl font-montserrat font-bold text-green-400 mb-2">Zero</div>
-              <div className="text-sm md:text-base text-gray-400 font-open-sans font-medium uppercase tracking-widest">CO2 Emissions</div>
-            </motion.div>
-            <motion.div variants={fadeIn} className="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <Recycle className="w-8 h-8 text-green-400 mx-auto mb-4" />
-              <div className="text-5xl md:text-6xl font-montserrat font-bold text-green-400 mb-2">100%</div>
-              <div className="text-sm md:text-base text-gray-400 font-open-sans font-medium uppercase tracking-widest">Circular Output</div>
-            </motion.div>
-            <motion.div variants={fadeIn} className="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <Globe2 className="w-8 h-8 text-green-400 mx-auto mb-4" />
-              <div className="text-5xl md:text-6xl font-montserrat font-bold text-green-400 mb-2">9+</div>
-              <div className="text-sm md:text-base text-gray-400 font-open-sans font-medium uppercase tracking-widest">Global SDGs</div>
-            </motion.div>
-            <motion.div variants={fadeIn} className="p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <ShieldCheck className="w-8 h-8 text-green-400 mx-auto mb-4" />
-              <div className="text-5xl md:text-6xl font-montserrat font-bold text-green-400 mb-2">∞</div>
-              <div className="text-sm md:text-base text-gray-400 font-open-sans font-medium uppercase tracking-widest">Sustainable Future</div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Investor CTA */}
-      <section className="py-32 bg-green-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-green-500 to-emerald-800"></div>
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+          transition={{ duration: 1 }}
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
         >
-          <Zap className="w-16 h-16 text-white/80 mx-auto mb-6" />
-          <h2 className="text-4xl md:text-6xl font-montserrat font-bold mb-8 leading-tight drop-shadow-lg">
-            Join the Future of Sustainable Construction
+          <h2 className="text-5xl md:text-7xl font-poppins font-bold text-white tracking-tighter mb-8">
+            Join the Transition
           </h2>
-          <p className="text-xl text-green-50 font-open-sans mb-12 max-w-3xl mx-auto leading-relaxed">
-            Greener Bricks Solution invites investors, institutions, and partners to support the scaling of our innovative recycling technology and make a tangible impact on the climate crisis in Africa and beyond.
+          <p className="text-xl text-gray-300 font-lato mb-12 font-light">
+            Whether you're an investor looking to fund scalable climate tech, or a partner seeking to utilize sustainable materials, it's time to build a cleaner world.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               href="/investors"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-green-700 bg-white hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-xl uppercase tracking-wider font-montserrat"
+              className="bg-green-600 text-white px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors rounded-sm shadow-xl font-montserrat"
             >
-              Partner With Us
+              Invest in us
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-white bg-transparent border-2 border-white hover:bg-white/10 transition-all duration-300 hover:scale-105 uppercase tracking-wider font-montserrat"
+              className="bg-transparent border-2 border-white text-white px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors rounded-sm font-montserrat"
             >
-              Contact Team
+              Partner with us
             </Link>
           </div>
         </motion.div>

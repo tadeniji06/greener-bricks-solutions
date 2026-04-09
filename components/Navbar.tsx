@@ -1,59 +1,66 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { logo } from "@/assets";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const links = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
+    { name: "Story", path: "/about" },
     { name: "Products", path: "/products" },
-    { name: "Research", path: "/research" },
+    { name: "Impact", path: "/research" },
     { name: "Gallery", path: "/gallery" },
     { name: "Investors", path: "/investors" },
   ];
 
   return (
-    <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${scrolled ? "bg-white/90 backdrop-blur-lg border-gray-200 shadow-sm" : "bg-white border-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-24 items-center">
           {/* Logo */}
           <div className="shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded bg-green-600 flex items-center justify-center">
-                <span className="text-white font-bold text-xl font-montserrat">G</span>
-              </div>
-              <span className="font-montserrat font-bold text-xl text-gray-900">
-                Greener <span className="text-green-600">Bricks</span>
-              </span>
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image src={logo} alt="Greener Bricks Logo" width={240} height={120} className="object-contain group-hover:scale-105 transition-transform" />
+              
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6 items-center">
+          <div className="hidden md:flex space-x-8 items-center">
             {links.map((link) => (
               <Link
                 key={link.name}
                 href={link.path}
-                className={`${
+                className={`relative px-1 py-2 text-xs font-bold tracking-[0.15em] uppercase font-montserrat transition-colors duration-300 ${
                   pathname === link.path
-                    ? "text-green-600 font-semibold"
-                    : "text-gray-600 hover:text-green-600 font-medium"
-                } transition-colors duration-200 text-sm uppercase tracking-wider`}
+                    ? "text-green-600"
+                    : "text-gray-600 hover:text-black"
+                }`}
               >
                 {link.name}
+                {pathname === link.path && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-green-600 rounded-t-sm" />
+                )}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-medium transition-colors text-sm uppercase tracking-wider shadow-md hover:shadow-lg"
+              className="ml-4 bg-black text-white px-6 py-3 text-xs font-bold font-montserrat tracking-[0.15em] uppercase hover:bg-green-600 hover:text-white transition-all duration-300 shadow-md rounded-sm"
             >
-              Contact Us
+              Contact
             </Link>
           </div>
 
@@ -61,14 +68,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 rounded-md p-2 transition-colors"
+              className="text-gray-900 hover:text-green-600 focus:outline-none p-2 transition-colors"
             >
               <span className="sr-only">Open main menu</span>
-              {!isOpen ? (
-                <Menu className="h-6 w-6" />
-              ) : (
-                <X className="h-6 w-6" />
-              )}
+              {!isOpen ? <Menu className="h-7 w-7" /> : <X className="h-7 w-7" />}
             </button>
           </div>
         </div>
@@ -76,18 +79,16 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full h-screen">
+          <div className="flex flex-col items-center pt-12 space-y-8">
             {links.map((link) => (
               <Link
                 key={link.name}
                 href={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`${
-                  pathname === link.path
-                    ? "bg-green-50 text-green-600"
-                    : "text-gray-700 hover:bg-gray-50 hover:text-green-600"
-                } block px-3 py-2 rounded-md font-medium text-base`}
+                className={`text-lg uppercase tracking-[0.2em] font-bold font-montserrat transition-colors duration-300 ${
+                  pathname === link.path ? "text-green-600" : "text-gray-700"
+                }`}
               >
                 {link.name}
               </Link>
@@ -95,7 +96,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="block px-3 py-2 text-base font-medium text-white bg-green-600 rounded-md hover:bg-green-700 mt-4 text-center"
+              className="bg-black text-white px-10 py-4 text-sm font-bold tracking-[0.2em] font-montserrat uppercase mt-8 hover:bg-green-600 transition-colors shadow-lg"
             >
               Contact Us
             </Link>

@@ -1,0 +1,10 @@
+import logo from "./logo.png";
+import i1 from "./i1.jpeg";
+import i2 from "./i2.jpeg";
+import i3 from "./i3.jpeg";
+import i4 from "./i4.jpeg";
+import i5 from "./i5.jpeg";
+import g1 from './g1.jpg';
+import g3 from './g3.png';
+import g2 from './g2.jpg';
+export { logo, i1, i2, i3, i4, i5, g1, g2, g3 };

@@ -1,145 +1,86 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Contact() {
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
-  };
-
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <section className="bg-gray-50 py-24 border-b border-gray-100">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-        >
-          <h1 className="text-sm text-green-600 font-semibold tracking-widest uppercase mb-4 font-montserrat">Contact Us</h1>
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-gray-900 max-w-3xl mx-auto">
-            Let's Build a Greener Future
-          </h2>
-          <p className="text-lg text-gray-600 font-open-sans mt-6 max-w-2xl mx-auto">
-            Ready to partner, invest, or simply want more information? Reach out to our team today.
-          </p>
-        </motion.div>
+    <div className="flex flex-col min-h-screen bg-white font-lato">
+      <section className="pt-40 pb-20 border-b border-gray-100 relative overflow-hidden bg-[#f8fcf9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+          <motion.h1 initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:0.8}} className="text-xs text-green-700 font-bold tracking-[0.3em] uppercase mb-4 font-montserrat">Communications</motion.h1>
+          <motion.h2 initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:0.8, delay:0.1}} className="text-4xl md:text-7xl font-poppins font-bold text-black tracking-tighter max-w-4xl mb-6">
+            Initiate connection.
+          </motion.h2>
+          <motion.p initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:0.8, delay:0.2}} className="text-gray-600 font-lato max-w-xl font-normal text-lg">
+            Direct channels for partners, media inquiries, and technical integrations. We aim to respond swiftly.
+          </motion.p>
+        </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-24 bg-white relative">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 item-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             
-            {/* Contact Info */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="bg-gray-900 text-white rounded-3xl p-10 shadow-2xl relative overflow-hidden h-full">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-green-500 rounded-full blur-[80px] mix-blend-screen opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
-                
-                <h3 className="text-2xl font-montserrat font-bold mb-8 relative z-10">Get In Touch</h3>
-                
-                <div className="space-y-8 flex flex-col justify-center h-full pb-10 relative z-10">
-                  <div className="flex gap-4 group cursor-pointer">
-                    <div className="text-green-400 group-hover:scale-110 transition-transform">
-                      <Phone className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Phone</h4>
-                      <p className="text-lg font-open-sans">
-                        <a href="tel:+2347067892326" className="hover:text-green-400 transition-colors">+234 706 789 2326</a>
-                      </p>
-                    </div>
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1}} className="bg-gray-50 border-l-4 border-black rounded-r-xl p-10 h-full flex flex-col justify-between shadow-sm">
+               <div>
+                  <h3 className="text-black font-poppins font-bold text-2xl mb-12 hidden">Contact Matrix</h3>
+                  
+                  <div className="space-y-12">
+                     <div>
+                        <p className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 mb-2 font-montserrat">Global Operations</p>
+                        <p className="text-black font-lato text-2xl font-bold"><a href="mailto:sys@greenerbricks.com" className="hover:text-green-600 transition-colors">hello@greenerbricks.com</a></p>
+                     </div>
+                     <div>
+                        <p className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 mb-2 font-montserrat">Encrypted Comms (Voice)</p>
+                        <p className="text-black font-lato text-xl font-bold"><a href="tel:+2347067892326" className="hover:text-green-600 transition-colors">+234 (706) 789 2326</a></p>
+                     </div>
+                     <div>
+                        <p className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 mb-2 font-montserrat">HQ Node</p>
+                        <p className="text-gray-700 font-lato text-lg leading-relaxed max-w-xs font-normal">Kaduna, Nigeria<br/>West African Technical Zone</p>
+                     </div>
                   </div>
+               </div>
 
-                  <div className="flex gap-4 group cursor-pointer">
-                    <div className="text-green-400 group-hover:scale-110 transition-transform">
-                      <Mail className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Email</h4>
-                      <p className="text-lg font-open-sans">
-                        <a href="mailto:info@greenerbricks.com" className="hover:text-green-400 transition-colors">info@greenerbricks.com</a>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 group cursor-pointer">
-                    <div className="text-green-400 group-hover:scale-110 transition-transform">
-                      <MapPin className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-1">Headquarters</h4>
-                      <p className="text-lg font-open-sans">
-                        Kaduna, Nigeria
-                      </p>
-                    </div>
-                  </div>
-
-                   <div className="pt-8 mt-auto border-t border-gray-800">
-                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Follow Us</h4>
-                    <div className="flex gap-4">
-                      <a href="#" className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 hover:-translate-y-1 transition-all">
-                         <span className="sr-only">LinkedIn</span>
-                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                      </a>
-                      <a href="#" className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 hover:-translate-y-1 transition-all">
-                        <span className="sr-only">Twitter</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+               <div className="mt-20">
+                 <p className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 mb-4 font-montserrat">Transmission Feeds</p>
+                 <div className="flex gap-6">
+                    <a href="#" className="text-black hover:text-green-600 text-sm font-bold font-montserrat uppercase tracking-[0.1em] transition-colors">LinkedIn</a>
+                    <a href="#" className="text-black hover:text-green-600 text-sm font-bold font-montserrat uppercase tracking-[0.1em] transition-colors">X / Network</a>
+                 </div>
+               </div>
             </motion.div>
 
-            {/* Contact Form */}
             <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-              className="bg-white border border-gray-100 shadow-xl rounded-3xl p-8 md:p-12"
+              initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} transition={{duration:1}}
+              className="bg-black border border-gray-800 p-10 lg:p-14 rounded-xl shadow-2xl"
             >
-              <motion.h3 variants={fadeIn} className="text-2xl font-montserrat font-bold text-gray-900 mb-6">Send Us a Message</motion.h3>
+              <h3 className="text-white font-poppins font-bold text-2xl mb-12 tracking-tight">Transmission Form</h3>
               
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                   <motion.div variants={fadeIn}>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Full Name</label>
-                    <input type="text" id="name" className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 font-open-sans transition-shadow" placeholder="Jane Doe" required />
-                  </motion.div>
-                  <motion.div variants={fadeIn}>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Email Address</label>
-                    <input type="email" id="email" className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 font-open-sans transition-shadow" placeholder="jane@example.com" required />
-                  </motion.div>
+              <form className="space-y-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                   <div className="relative">
+                      <label className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 block mb-2 font-montserrat">Identification</label>
+                      <input type="text" className="w-full bg-transparent border-b-2 border-gray-700 pb-3 text-white font-lato focus:outline-none focus:border-green-500 transition-colors" required placeholder="User Name" />
+                   </div>
+                   <div className="relative">
+                      <label className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 block mb-2 font-montserrat">Routing (Email)</label>
+                      <input type="email" className="w-full bg-transparent border-b-2 border-gray-700 pb-3 text-white font-lato focus:outline-none focus:border-green-500 transition-colors" required placeholder="system@node.com" />
+                   </div>
                 </div>
 
-                <motion.div variants={fadeIn}>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Subject</label>
-                  <input type="text" id="subject" className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 font-open-sans transition-shadow" placeholder="How can we help?" required />
-                </motion.div>
+                <div className="relative">
+                   <label className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 block mb-2 font-montserrat">Classification / Subject</label>
+                   <input type="text" className="w-full bg-transparent border-b-2 border-gray-700 pb-3 text-white font-lato focus:outline-none focus:border-green-500 transition-colors" required placeholder="e.g., Strategic Integration" />
+                </div>
 
-                <motion.div variants={fadeIn}>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">Message</label>
-                  <textarea id="message" rows={5} className="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 font-open-sans transition-shadow" placeholder="Write your message here..."></textarea>
-                </motion.div>
+                <div className="relative">
+                   <label className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 block mb-2 font-montserrat">Data Packet</label>
+                   <textarea rows={5} className="w-full bg-transparent border-b-2 border-gray-700 pb-3 text-white font-lato focus:outline-none focus:border-green-500 transition-colors resize-none mt-2" required placeholder="Awaiting Input..."></textarea>
+                </div>
 
-                <motion.button variants={fadeIn} type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-md transition-colors text-lg font-montserrat uppercase tracking-wider shadow-lg hover:shadow-xl translate-y-0 hover:-translate-y-1">
-                  Send Message
-                </motion.button>
+                <button type="submit" className="w-full bg-green-600 text-white font-bold py-5 px-6 text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-300 rounded-sm font-montserrat shadow-md mt-4">
+                  Transmit Data
+                </button>
               </form>
             </motion.div>
 

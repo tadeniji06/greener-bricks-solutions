@@ -1,75 +1,66 @@
-import { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "News & Updates | Greener Bricks Solution",
-  description: "Stay updated with our latest research developments, innovation milestones, and environmental impact stories.",
-};
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function News() {
-  const newsItems = [
+  const logs = [
     {
-      title: "Greener Bricks Solution Unveils the New KEMILAN Prototype",
-      category: "Innovation",
-      date: "March 15, 2026",
-      excerpt: "Our team has successfully tested the latest iteration of the KEMILAN recycling machine, achieving a 30% increase in daily capacity with absolute zero carbon emissions.",
+      title: "KEMILAN Reactor Protocol Enhanced",
+      tag: "Tech Log",
+      date: "03.15.2026",
+      desc: "Iteration 4 of the KEMILAN core has gone live, achieving extreme tolerance in mixed-plastic digestion. Total emission remains at absolute zero.",
     },
     {
-      title: "Partnership with Kaduna State Government Announced",
-      category: "Partnerships",
-      date: "February 28, 2026",
-      excerpt: "We are thrilled to announce a new partnership aimed at deploying our eco-friendly plastic bricks for public infrastructure projects within the state.",
+      title: "Kaduna State Integration Initiated",
+      tag: "Deployment",
+      date: "02.28.2026",
+      desc: "Grid deployment has officially begun. Structural pavement materials processed entirely from state landfill caches are paving the new industrial vectors.",
     },
     {
-      title: "Research Paper on Plastic Durability Published",
-      category: "Research",
-      date: "January 10, 2026",
-      excerpt: "Our in-house R&D team recently published findings demonstrating that our plastic bricks exhibit superior water resistance compared to traditional concrete blocks.",
+      title: "Material Tensile Analytics Published",
+      tag: "Data Yield",
+      date: "01.10.2026",
+      desc: "Peer-reviewed analysis confirms synthesized blocks exhibit 214% greater impact resistance relative to cement equivalent parameters.",
     }
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <section className="bg-gray-50 py-24 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-sm text-green-600 font-semibold tracking-widest uppercase mb-4 font-montserrat">News & Updates</h1>
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-gray-900 max-w-3xl mx-auto">
-            Latest from Greener Bricks
-          </h2>
+    <div className="flex flex-col min-h-screen bg-white font-lato">
+      <section className="pt-40 pb-24 border-b border-gray-100 relative bg-[#f8fcf9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-black">
+          <motion.h1 initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:0.8}} className="text-xs text-green-700 font-bold tracking-[0.3em] uppercase mb-4 font-montserrat">Operations Log</motion.h1>
+          <motion.h2 initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:0.8, delay:0.1}} className="text-4xl md:text-6xl font-poppins font-bold tracking-tighter mb-6">
+            System Updates.
+          </motion.h2>
+          <motion.p initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:0.8, delay:0.2}} className="text-gray-600 text-lg max-w-xl mx-auto font-lato font-normal">Our latest advances in zero-emission technology and deployment operations.</motion.p>
         </div>
       </section>
 
-      {/* Main Content */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsItems.map((item, idx) => (
-              <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group">
-                <div className="flex justify-between items-center mb-6">
-                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider font-montserrat">
-                    {item.category}
-                  </span>
-                  <span className="text-sm text-gray-400 font-open-sans">{item.date}</span>
-                </div>
-                <h3 className="text-xl font-montserrat font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 font-open-sans grow mb-6">
-                  {item.excerpt}
-                </p>
-                <div className="mt-auto">
-                  <span className="text-green-600 font-semibold font-montserrat uppercase tracking-wider text-sm flex items-center gap-2 group-hover:gap-3 transition-all cursor-pointer">
-                    Read More <span>→</span>
-                  </span>
-                </div>
-              </div>
+            {logs.map((log, i) => (
+              <motion.div 
+                initial={{opacity:0, y:20}} whileInView={{opacity:1, y:0}} viewport={{once:true}} transition={{duration:0.8, delay: i * 0.1}}
+                key={i} 
+                className="bg-white border rounded-xl border-gray-100 p-8 shadow-sm group hover:border-green-300 hover:shadow-xl transition-all flex flex-col min-h-[300px]"
+              >
+                 <div className="flex justify-between items-center mb-10">
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-green-700 bg-green-50 py-1.5 px-3 rounded-md font-montserrat shadow-sm">{log.tag}</span>
+                    <span className="text-xs text-gray-500 font-bold font-montserrat">{log.date}</span>
+                 </div>
+                 
+                 <h3 className="text-2xl font-poppins font-bold leading-tight tracking-tight mb-4 text-black group-hover:text-green-600 transition-colors">{log.title}</h3>
+                 <p className="text-base font-lato text-gray-600 font-normal leading-relaxed flex-grow">{log.desc}</p>
+                 
+                 <div className="mt-8 pt-6 border-t border-gray-100">
+                    <span className="text-xs uppercase tracking-[0.2em] font-bold text-black flex items-center gap-2 cursor-pointer group-hover:text-green-600 transition-colors font-montserrat">
+                      Read Entry <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-green-600 group-hover:translate-x-2 transition-all" />
+                    </span>
+                 </div>
+              </motion.div>
             ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <button className="bg-transparent border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-full font-bold transition-colors uppercase tracking-wider font-montserrat">
-              Load More
-            </button>
           </div>
         </div>
       </section>
