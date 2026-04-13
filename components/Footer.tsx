@@ -14,7 +14,7 @@ export default function Footer() {
              <Link href="/" className="flex items-center gap-3 mb-8">
               <Image src={logo} alt="Greener Bricks Logo" width={50} height={50} className="object-contain" />
               <span className="font-poppins font-bold text-xl tracking-[0.1em] text-white uppercase">
-                Geener <span className="text-green-500">Bricks</span>
+                Greener <span className="text-green-500">Bricks</span>
               </span>
             </Link>
             <p className="font-lato leading-relaxed text-base mb-8 text-gray-200">

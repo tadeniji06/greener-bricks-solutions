@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Target, Lightbulb, Rocket } from "lucide-react";
 import Image from "next/image";
-import { g2 } from "@/assets";
+import { p1 } from "@/assets";
 
 export default function About() {
   const fadeIn = {
@@ -79,7 +79,7 @@ export default function About() {
               className="flex flex-col gap-10"
             >
               <motion.div variants={fadeIn} className="relative h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
-                <Image src={g2} alt="Company Impact" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+                <Image src={p1} alt="Company Impact" fill className="object-cover hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-linear-to-tr from-black/60 to-transparent mix-blend-multiply"></div>
                 <div className="absolute bottom-6 left-6 text-white">
                   <span className="font-poppins font-bold text-2xl tracking-[0.05em]">Greener Bricks HQ</span>

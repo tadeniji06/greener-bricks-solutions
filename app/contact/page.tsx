@@ -28,7 +28,7 @@ export default function Contact() {
                   <div className="space-y-12">
                      <div>
                         <p className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 mb-2 font-montserrat">Global Operations</p>
-                        <p className="text-black font-lato text-2xl font-bold"><a href="mailto:sys@greenerbricks.com" className="hover:text-green-600 transition-colors">hello@greenerbricks.com</a></p>
+                        <p className="text-black font-lato text-2xl font-bold"><a href="mailto:sys@greenerbricks.com" className="hover:text-green-600 transition-colors">enquiries@greenerbrickssolution.com</a></p>
                      </div>
                      <div>
                         <p className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 mb-2 font-montserrat">Encrypted Comms (Voice)</p>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { MoveRight, ArrowRight, Activity, Globe, Zap, Crosshair } from "lucide-react";
-import { g1, g2, g3 } from "@/assets";
+import { c1, g1, g2, g3 } from "@/assets";
 
 export default function Home() {
   const fadeUp = {
@@ -78,7 +78,7 @@ export default function Home() {
 
             {/* Visual Box 1 */}
             <motion.div variants={fadeUp} className="lg:col-span-7 relative h-[600px] border border-gray-100 bg-gray-50 overflow-hidden group rounded-xl shadow-sm hover:shadow-xl transition-shadow">
-               <Image src={g2} alt="Sustainable environment" fill className="object-cover opacity-90 group-hover:scale-105 transition-all duration-700" />
+               <Image src={c1} alt="Sustainable environment" fill className="object-cover opacity-90 group-hover:scale-105 transition-all duration-700" />
                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
                <div className="absolute bottom-0 left-0 p-10">
                  <div className="flex items-center gap-2 mb-4 text-green-400">
